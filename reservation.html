@@ -25,6 +25,71 @@
     <section class="main_section">
         <p><br><br></p>
         <h2 class="section_header"> Make Appointment Now! </h2>
+     
+        <style>
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        th {
+            background-color: lightgray;
+        }
+        .booked {
+            background-color: red;
+            color: white;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Booking System</h1>
+        <table>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        <tr>
+            <td>9:00am</td>
+            <td id="mon-9" onclick="bookSlot('mon-9')">Available</td>
+            <td id="tue-9" onclick="bookSlot('tue-9')">Available</td>
+            <td id="wed-9" onclick="bookSlot('wed-9')">Available</td>
+            <td id="thu-9" onclick="bookSlot('thu-9')">Available</td>
+            <td id="fri-9" onclick="bookSlot('fri-9')">Available</td>
+        </tr>
+        <tr>
+            <td>10:00am</td>
+            <td id="mon-10" onclick="bookSlot('mon-10')">Available</td>
+            <td id="tue-10" onclick="bookSlot('tue-10')">Available</td>
+            <td id="wed-10" onclick="bookSlot('wed-10')">Available</td>
+            <td id="thu-10" onclick="bookSlot('thu-10')">Available</td>
+            <td id="fri-10" onclick="bookSlot('fri-10')">Available</td>
+        </tr>
+        <!-- repeat for all time slots -->
+        </table>
+        <script>
+        function bookSlot(slotId) {
+            var slot = document.getElementById(slotId);
+            if (slot.classList.contains('booked')) {
+            // already booked, do nothing
+            return;
+            }
+            // prompt user for booking details
+            var name = prompt("Enter your name:");
+            var email = prompt("Enter your email:");
+            // update slot with booking details
+            slot.classList.add('booked');
+            slot.innerHTML = name + '<br>' + email;
+        }
+        </script>
+    </body>
+
         <p> Implementing test </p>
     </section>
 
