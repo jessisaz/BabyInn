@@ -26,25 +26,81 @@
         <p><br><br></p>
         <h2 class="section_header"> Make Appointment Now! </h2>
         
+
     <head>
         <meta charset="UTF-8">
-        <title>Date and Time Picker</title>
+        <title>Date and Time Picker in Calendar Format</title>
         <style>
-        input[type="datetime-local"] {
-            width: 200px;
-            padding: 5px;
-            font-size: 16px;
+        table {
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        th {
+            background-color: lightgray;
+        }
+        .selected {
+            background-color: blue;
+            color: white;
         }
         </style>
     </head>
     <body>
-        <h1>Date and Time Picker</h1>
-        <form>
-        <label for="datetime">Pick a date and time:</label>
-        <input type="datetime-local" id="datetime" name="datetime">
-        <br><br>
-        <input type="submit" value="Submit">
-        </form>
+        <h1>Date and Time Picker in Calendar Format</h1>
+        <p>Select a date and time:</p>
+        <table>
+        <tr>
+            <th colspan="7">
+            <input type="month" id="monthPicker" onchange="renderCalendar()">
+            </th>
+        </tr>
+        <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+        </tr>
+        <tbody id="calendarBody"></tbody>
+        </table>
+        <script>
+        function renderCalendar() {
+            const monthPicker = document.getElementById('monthPicker');
+            const selectedMonth = new Date(monthPicker.value);
+            const calendarBody = document.getElementById('calendarBody');
+            calendarBody.innerHTML = '';
+
+            const daysInMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0).getDate();
+            const firstDayOfMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1).getDay();
+
+            let row = document.createElement('tr');
+            for (let i = 0; i < firstDayOfMonth; i++) {
+            row.appendChild(document.createElement('td'));
+            }
+            for (let i = 1; i <= daysInMonth; i++) {
+            const cell = document.createElement('td');
+            cell.innerHTML = i;
+            cell.onclick = function() {
+                const selectedCells = document.querySelectorAll('.selected');
+                for (let i = 0; i < selectedCells.length; i++) {
+                selectedCells[i].classList.remove('selected');
+                }
+                cell.classList.add('selected');
+            };
+            row.appendChild(cell);
+            if ((i + firstDayOfMonth - 1) % 7 === 6 || i === daysInMonth) {
+                calendarBody.appendChild(row);
+                row = document.createElement('tr');
+            }
+            }
+        }
+        renderCalendar();
+        </script>
     </body>
 
         <p> Implementing test </p>
