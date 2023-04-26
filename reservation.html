@@ -26,6 +26,7 @@
         <p><br><br></p>
         <h2 class="section_header"> Make Appointment Now! </h2>
 
+
       <head>
         <meta charset="UTF-8">
         <style>
@@ -109,13 +110,12 @@
 
           function isDateDisabled(date) {
             // Example: disable weekends and dates before today
-            return date < new Date();
+            return date.getDay() === 0 || date.getDay() === 6 || date < new Date();
           }
 
           renderCalendar();
         </script>
       </body>
-
         
       <head>
         <meta charset="UTF-8">
