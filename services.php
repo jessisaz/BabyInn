@@ -1,0 +1,138 @@
+<?php
+    include_once 'header.php';
+?>
+
+    <section class="main_section">
+        <p><br><br></p>
+        <p class="section_header"> work yet to be done, create a better layout using css
+        <!-- Please implement content-->
+        <!-- textual information about all the services provided, as well as images to help deliver-->
+        </p>
+
+
+        <div>
+            <h2>
+                Mother Care
+            </h2>
+            <div>
+                <span>
+                    <img src="Images/services/herbal_bath_med.png">
+                    <p>
+                        herbal bath med
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/services/breast_inspection.png">
+                    <p>
+                        breast inspection
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/services/mental_consulting.png">
+                    <p>
+                        mental consulting
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/services/postpartum_beauty.png">
+                    <p>
+                        postpartum beauty
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/services/baby_knowledge_lesson.png">
+                    <p>
+                        baby knowledge lesson
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/services/spa.png">
+                    <p>
+                        massage and spa
+                    </p>
+                </span>
+
+
+            </div>
+        </div>
+
+
+
+
+        <div>
+            <h2>
+                <br>
+                <br>
+                Baby Care
+            </h2>
+
+            <div>
+                <span>
+                    <img src="Images/baby_services/baby_spa.png">
+                    <p>
+                        baby spa
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/baby_services/baby_photography.png">
+                    <p>
+                        baby photography
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/baby_services/dna_testing.png">
+                    <p>
+                        dna testing
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/baby_services/chinese_name_change.png">
+                    <p>
+                        chinese naming
+                    </p>
+                </span>
+
+                <span>
+                    <img src="Images/baby_services/month_old_fest.png">
+                    <p>
+                        month old fest
+                    </p>
+                </span>
+
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <footer>
+        <div class="main-footer-container">
+            <span class = "footer_text">
+                Address: 338 Queen's Road Central, Sheung Wan, Hong Kong &#124 Enquiries: (+852) 6610 2338 &#124 Email: babyinn.hk@gmail.com
+                <br>
+                © 2021 寶堡月子中心有限公司 Baby Inn Care Centre Limited   
+            </span>
+
+            <span class = "icons">
+                <a href="https://api.whatsapp.com/send/?phone=85266102338&text&type=phone_number&app_absent=0" target="_blank"><img src="Images/Icons/whatsapp icon.png" width="20"></a>
+                <a href="https://www.facebook.com/babyinnhk" target="_blank"><img src="Images/Icons/facebook icon.png" width="20"></a>
+                <a href="https://www.instagram.com/babyinn.hk/" target="_blank"><img src="Images/Icons/inst icon.png" width="20"></a>
+                <a href="https://www.youtube.com/channel/UCV9ZCZTQHQMFfXno2zykHDw" target="_blank"><img src="Images/Icons/youtube icon.png" width="20"></a>
+            </span>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
