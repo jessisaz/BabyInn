@@ -1,154 +1,142 @@
 <?php
-    include_once 'header.php';
+include_once 'header.php';
 ?>
 
-    <section class="main_section">
-        <p><br><br></p>
-        <h2 class="section_header"> Make Appointment Now! </h2>
+<section class="main_section">
+  <p><br><br></p>
+  <h2 class="section_header"> Make Appointment Now! </h2>
 
+  
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      table {
+        border-collapse: collapse;
+      }
 
-      <head>
-        <meta charset="UTF-8">
-        <style>
-          table {
-            border-collapse: collapse;
-          }
-          th, td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid black;
-          }
-          th {
-            background-color: rgb(241, 189, 202);
-          }
-          .selected {
-            background-color: #8F1E3F;
-            color: white;
-          }
-          .disabled {
-            background-color: lightgray;
-            color: white;
-            pointer-events: none;
-          }
-        </style>
-      </head>
-      <body>
-        <p>Select a date and time:</p>
-        <table>
-          <tr>
-            <th colspan="7">
-              <input type="month" id="monthPicker" onchange="renderCalendar()">
-            </th>
-          </tr>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-          <tbody id="calendarBody"></tbody>
-        </table>
-        <script>
-          function renderCalendar() {
-            const monthPicker = document.getElementById('monthPicker');
-            const selectedMonth = new Date(monthPicker.value);
-            const calendarBody = document.getElementById('calendarBody');
-            calendarBody.innerHTML = '';
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+      }
 
-            const daysInMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0).getDate();
-            const firstDayOfMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1).getDay();
+      th {
+        background-color: rgb(241, 189, 202);
+      }
 
-            let row = document.createElement('tr');
-            for (let i = 0; i < firstDayOfMonth; i++) {
-              row.appendChild(document.createElement('td'));
-            }
-            for (let i = 1; i <= daysInMonth; i++) {
-              const cell = document.createElement('td');
-              cell.innerHTML = i;
-              const currentDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), i);
-              if (isDateDisabled(currentDate)) {
-                cell.classList.add('disabled');
-              } else {
-                cell.onclick = function() {
-                  const selectedCells = document.querySelectorAll('.selected');
-                  for (let i = 0; i < selectedCells.length; i++) {
-                    selectedCells[i].classList.remove('selected');
-                  }
-                  cell.classList.add('selected');
-                };
+      .selected {
+        background-color: #8F1E3F;
+        color: white;
+      }
+
+      .disabled {
+        background-color: lightgray;
+        color: white;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>Select a date and time:</p>
+    <table>
+      <tr>
+        <th colspan="7">
+          <input type="month" id="monthPicker" onchange="renderCalendar()">
+        </th>
+      </tr>
+      <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+      </tr>
+      <tbody id="calendarBody"></tbody>
+    </table>
+    <script>
+      function renderCalendar() {
+        const monthPicker = document.getElementById('monthPicker');
+        const selectedMonth = new Date(monthPicker.value);
+        const calendarBody = document.getElementById('calendarBody');
+        calendarBody.innerHTML = '';
+
+        const daysInMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth() + 1, 0).getDate();
+        const firstDayOfMonth = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 1).getDay();
+
+        let row = document.createElement('tr');
+        for (let i = 0; i < firstDayOfMonth; i++) {
+          row.appendChild(document.createElement('td'));
+        }
+        for (let i = 1; i <= daysInMonth; i++) {
+          const cell = document.createElement('td');
+          cell.innerHTML = i;
+          const currentDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), i);
+          if (isDateDisabled(currentDate)) {
+            cell.classList.add('disabled');
+          } else {
+            cell.onclick = function() {
+              const selectedCells = document.querySelectorAll('.selected');
+              for (let i = 0; i < selectedCells.length; i++) {
+                selectedCells[i].classList.remove('selected');
               }
-              row.appendChild(cell);
-              if ((i + firstDayOfMonth - 1) % 7 === 6 || i === daysInMonth) {
-                calendarBody.appendChild(row);
-                row = document.createElement('tr');
-              }
-            }
+              cell.classList.add('selected');
+            };
           }
-
-          function isDateDisabled(date) {
-            // Example: disable weekends and dates before today
-            return date < new Date();
+          row.appendChild(cell);
+          if ((i + firstDayOfMonth - 1) % 7 === 6 || i === daysInMonth) {
+            calendarBody.appendChild(row);
+            row = document.createElement('tr');
           }
+        }
+      }
 
-          renderCalendar();
-        </script>
-      </body>
-        
-      <head>
-        <meta charset="UTF-8">
-      </head>
-      <body>
-        <div>
-          <select id="hourPicker"></select>
-          <input type="time" id="timePicker">
-        </div>
-        <script>
-          const hourPicker = document.getElementById('hourPicker');
-          const timePicker = document.getElementById('timePicker');
+      function isDateDisabled(date) {
+        // Example: disable weekends and dates before today
+        return date < new Date();
+      }
 
-          for (let i = 0; i < 24; i++) {
-            const option = document.createElement('option');
-            option.value = i.toString().padStart(2, '0') + ':00';
-            option.textContent = i.toString().padStart(2, '0') + ':00';
-            hourPicker.appendChild(option);
-          }
+      renderCalendar();
+    </script>
+  </body>
 
-          hourPicker.onchange = function() {
-            timePicker.value = hourPicker.value;
-          };
+  <head>
+    <meta charset="UTF-8">
+  </head>
 
-          timePicker.onchange = function() {
-            hourPicker.value = timePicker.value.substr(0, 5);
-          };
-        </script>
-      </body>
+  <body>
+    <div>
+      <select id="hourPicker"></select>
+      <input type="time" id="timePicker">
+    </div>
+    <script>
+      const hourPicker = document.getElementById('hourPicker');
+      const timePicker = document.getElementById('timePicker');
 
-        <p> Implementing test </p>
-    </section>
+      for (let i = 0; i < 24; i++) {
+        const option = document.createElement('option');
+        option.value = i.toString().padStart(2, '0') + ':00';
+        option.textContent = i.toString().padStart(2, '0') + ':00';
+        hourPicker.appendChild(option);
+      }
 
+      hourPicker.onchange = function() {
+        timePicker.value = hourPicker.value;
+      };
 
-    <footer>
-        <div class="main-footer-container">
-            <span class = "footer_text">
-                Address: 338 Queen's Road Central, Sheung Wan, Hong Kong &#124 Enquiries: (+852) 6610 2338 &#124 Email: babyinn.hk@gmail.com
-                <br>
-                © 2021 寶堡月子中心有限公司 Baby Inn Care Centre Limited   
-            </span>
+      timePicker.onchange = function() {
+        hourPicker.value = timePicker.value.substr(0, 5);
+      };
+    </script>
+  </body>
 
-            <span class = "icons">
-                <a href="https://api.whatsapp.com/send/?phone=85266102338&text&type=phone_number&app_absent=0" target="_blank"><img src="Images/Icons/whatsapp icon.png" width="20"></a>
-                <a href="https://www.facebook.com/babyinnhk" target="_blank"><img src="Images/Icons/facebook icon.png" width="20"></a>
-                <a href="https://www.instagram.com/babyinn.hk/" target="_blank"><img src="Images/Icons/inst icon.png" width="20"></a>
-                <a href="https://www.youtube.com/channel/UCV9ZCZTQHQMFfXno2zykHDw" target="_blank"><img src="Images/Icons/youtube icon.png" width="20"></a>
-            </span>
-        </div>
-    </footer>
+  <p> Implementing test </p>
+</section>
 
 
-    <script src="script.js"></script>
-</body>
-
-</html>
+<?php
+    include_once 'footer.php';
+?>

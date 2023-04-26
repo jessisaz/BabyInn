@@ -35,10 +35,10 @@
                 <!-- login-email required -->
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="email" required>
-                    <label>Email</label>
+                    <input type="uid" required>
+                    <label>Username</label>
                 </div>
 
                 <!-- login-password required -->
@@ -55,6 +55,7 @@
                     <label><input type="checkbox"> Remember me</label>
                     <a href="#">Forgot Password?</a>
                 </div>
+                <!-- submit button -->
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
@@ -66,7 +67,7 @@
         <div class="form-box register">
             <!-- php registration action -->
             <h2>Registration</h2>
-            <form action="#">
+            <form action="signup.inc.php">
                 <!-- register username required -->
                 <div class="input-box">
                     <span class="icon">
