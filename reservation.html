@@ -45,7 +45,7 @@
             color: white;
           }
           .disabled {
-            background-color: grey;
+            background-color: lightgray;
             color: white
             pointer-events: none;
           }
@@ -110,7 +110,7 @@
 
           function isDateDisabled(date) {
             // Example: disable weekends and dates before today
-            return date.getDay() === 0 || date.getDay() === 6 || date < new Date();
+            return date < new Date();
           }
 
           renderCalendar();
