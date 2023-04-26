@@ -70,7 +70,6 @@
           </tr>
           <tbody id="calendarBody"></tbody>
         </table>
-        <input type="time" id="timePicker">
         <script>
           function renderCalendar() {
             const monthPicker = document.getElementById('monthPicker');
@@ -117,6 +116,35 @@
         </script>
       </body>
 
+        
+      <head>
+        <meta charset="UTF-8">
+      </head>
+      <body>
+        <div>
+          <select id="hourPicker"></select>
+          <input type="time" id="timePicker">
+        </div>
+        <script>
+          const hourPicker = document.getElementById('hourPicker');
+          const timePicker = document.getElementById('timePicker');
+
+          for (let i = 0; i < 24; i++) {
+            const option = document.createElement('option');
+            option.value = i.toString().padStart(2, '0') + ':00';
+            option.textContent = i.toString().padStart(2, '0') + ':00';
+            hourPicker.appendChild(option);
+          }
+
+          hourPicker.onchange = function() {
+            timePicker.value = hourPicker.value;
+          };
+
+          timePicker.onchange = function() {
+            hourPicker.value = timePicker.value.substr(0, 5);
+          };
+        </script>
+      </body>
 
         <p> Implementing test </p>
     </section>
