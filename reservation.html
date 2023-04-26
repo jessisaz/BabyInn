@@ -25,37 +25,40 @@
     <section class="main_section">
         <p><br><br></p>
         <h2 class="section_header"> Make Appointment Now! </h2>
-        
 
-    <head>
+      <head>
         <meta charset="UTF-8">
         <style>
-        table {
+          table {
             border-collapse: collapse;
-        }
-        th, td {
+          }
+          th, td {
             padding: 10px;
             text-align: center;
             border: 1px solid black;
-        }
-        th {
+          }
+          th {
             background-color: lightgray;
-        }
-        .selected {
+          }
+          .selected {
             background-color: pink;
             color: white;
-        }
+          }
+          .disabled {
+            color: gray;
+            pointer-events: none;
+          }
         </style>
-    </head>
-    <body>
+      </head>
+      <body>
         <p>Select a date and time:</p>
         <table>
-        <tr>
+          <tr>
             <th colspan="7">
-            <input type="month" id="monthPicker" onchange="renderCalendar()">
+              <input type="month" id="monthPicker" onchange="renderCalendar()">
             </th>
-        </tr>
-        <tr>
+          </tr>
+          <tr>
             <th>Sun</th>
             <th>Mon</th>
             <th>Tue</th>
@@ -84,13 +87,18 @@
             for (let i = 1; i <= daysInMonth; i++) {
               const cell = document.createElement('td');
               cell.innerHTML = i;
-              cell.onclick = function() {
-                const selectedCells = document.querySelectorAll('.selected');
-                for (let i = 0; i < selectedCells.length; i++) {
-                  selectedCells[i].classList.remove('selected');
-                }
-                cell.classList.add('selected');
-              };
+              const currentDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), i);
+              if (isDateDisabled(currentDate)) {
+                cell.classList.add('disabled');
+              } else {
+                cell.onclick = function() {
+                  const selectedCells = document.querySelectorAll('.selected');
+                  for (let i = 0; i < selectedCells.length; i++) {
+                    selectedCells[i].classList.remove('selected');
+                  }
+                  cell.classList.add('selected');
+                };
+              }
               row.appendChild(cell);
               if ((i + firstDayOfMonth - 1) % 7 === 6 || i === daysInMonth) {
                 calendarBody.appendChild(row);
@@ -98,6 +106,12 @@
               }
             }
           }
+
+          function isDateDisabled(date) {
+            // Example: disable weekends and dates before today
+            return date.getDay() === 0 || date.getDay() === 6 || date < new Date();
+          }
+
           renderCalendar();
         </script>
       </body>
