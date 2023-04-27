@@ -232,7 +232,7 @@ iframe.center {
     text-decoration: underline;
 }
 
-.btn {
+.submit {
     width: 100%;
     height: 45px;
     background: #162938;
@@ -267,6 +267,13 @@ iframe.center {
 
 
 
+.about_Baby_Inn h2{
+    font-family: 'Times New Roman';
+}
+
+.about_Baby_Inn p, .about_Baby_Inn i{
+    font-family: 'Georgia';
+}
 
 
 

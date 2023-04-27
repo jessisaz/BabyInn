@@ -31,7 +31,7 @@
         <div class="form-box login">
             <h2>Login</h2>
             <!-- php login action -->
-            <form action="login.inc.php" method="post">
+            <form action="includes/login.inc.php" method="post">
                 <!-- login-email required -->
                 <div class="input-box">
                     <span class="icon">
@@ -46,7 +46,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="pwd" required>
                     <label>Password</label>
                 </div>
 
@@ -56,7 +56,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <!-- submit button -->
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" name="submit" class="submit">Login</button>
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
@@ -67,13 +67,13 @@
         <div class="form-box register">
             <!-- php registration action -->
             <h2>Registration</h2>
-            <form action="signup.inc.php">
+            <form action="includes/signup.inc.php" method="post">
                 <!-- register username required -->
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="text" required>
+                    <input type="text" name="uid" required>
                     <label>Username</label>
                 </div>
                 <!-- register email required -->
@@ -81,7 +81,7 @@
                     <span class="icon">
                         <ion-icon name="mail"></ion-icon>
                     </span>
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label>Email</label>
                 </div>
                 <!-- register password required -->
@@ -89,7 +89,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" required>
+                    <input type="password" name="pwd" required>
                     <label>Password</label>
                 </div>
 
@@ -98,8 +98,8 @@
                     <label><input type="checkbox"> I agree to the terms & conditions</label>
                 </div>
 
-                <!-- login button -->
-                <button type="submit" class="btn">Register</button>
+                <!-- register button -->
+                <button type="submit" name="submit" class="submit">Register</button>
 
                 <div class="login-register">
                     <p>Already have an account? <a href="#" class="login-link">Login</a></p>
@@ -107,6 +107,10 @@
             </form>
         </div>
     </div>
+
+    <?php
+    var_dump(function_exists('mysqli_connect'));
+    ?>
 
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
