@@ -2,7 +2,7 @@
 include_once 'header.php';
 ?>
         
-        <section class="main_section">
+    <section class="main_section">
         <p><br><br></p>
         <h2 class="section_header"> Make Appointment Now! </h2>
 

@@ -21,6 +21,9 @@ iconClose.addEventListener('click', ()=> {
     wrapper.classList.remove('active');
 });
 
+
+
+
 /* reservation start */
 
 const slidePage = document.querySelector(".slide-page");

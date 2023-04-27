@@ -1,5 +1,6 @@
 <?php
 
+// register functions
 function emptyInputSignup($email, $username, $pwd) {
     $result = false;
     if (empty($username) || empty($email) || empty($pwd)) {
@@ -79,5 +80,43 @@ function createUser($conn, $email, $username, $pwd) {
 }
 
 
+// login functions
+function emptyInputLogin($username, $pwd) {
+    $result = false;
+    if (empty($username) || empty($pwd)) {
+        $result = true;
+    }
+    else {
+        $result = false;
+    }
+    return $result;
+}
 
-?>
+function loginUser($conn, $username, $pwd) {
+    $uidExists = uidExists($conn, $username, $username);
+
+    if ($uidExists === false) {
+        echo '<script>alert("Username/email does not exist!")</script>';
+        exit();
+    }
+
+    $pwdHashed = $uidExists["pwd"];
+    if ($pwdHashed === "qwer1234"){
+        echo '<script>alert("that is awkward")</script>';
+    } else {
+        echo '<script>alert("checking")</script>';
+    }
+
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if ($checkPwd === false) {
+        echo '<script>alert("wrong password")</script>';
+    }
+    else if ($checkPwd === true) {
+        session_start();
+        $_SESSION["userid"] = $uidExists["usersId"];
+        $_SESSION["useruid"] = $uidExists["usersUid"];
+        header("location: ../index.php");
+        exit();
+    }
+}

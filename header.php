@@ -37,7 +37,7 @@
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="uid" required>
+                    <input type="uid" name="uid" required>
                     <label>Username</label>
                 </div>
 
@@ -46,7 +46,7 @@
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="pwd" required>
+                    <input type="pwd" name="pwd" required>
                     <label>Password</label>
                 </div>
 
@@ -56,7 +56,7 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <!-- submit button -->
-                <button type="submit" name="submit" class="submit">Login</button>
+                <button type="login_submit" name="login_submit" class="submit">Login</button>
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
                 </div>
@@ -105,8 +105,27 @@
                     <p>Already have an account? <a href="#" class="login-link">Login</a></p>
                 </div>
             </form>
+            <?php
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "emptyinput") {
+                        echo '<script>alert("Fill in all fields!")</script>';
+                    }
+                    else if ($_GET["error"] == "invaliduid") {
+                        echo '<script>alert("Choose a proper username!")</script>';
+                    }
+                    else if ($_GET["error"] == "invalidemail") {
+                        echo '<script>alert("Choose a proper email!")</script>';
+                    }
+                    else if ($_GET["error"] == "usernametaken") {
+                        echo '<script>alert("Username already taken!")</script>';
+                    }
+                }
+    
+            ?>
         </div>
     </div>
+
+
 
     <?php
     var_dump(function_exists('mysqli_connect'));
